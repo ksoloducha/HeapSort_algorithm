@@ -43,7 +43,6 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
         int childId = lastId;
         int parentId = (childId - 1) / 2;
 
-        //while (parentId >= 0) {
         while (childId != 0) {
 
             if (isChildBiggerThanParent(parentId, childId)) {
@@ -57,12 +56,6 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
         }
     }
 
-    public void print() {
-        for (T item : items) {
-            System.out.println(item.toString());
-        }
-    }
-
     private void heapDown() {
 
         if (items.size() > 1) {
@@ -70,7 +63,8 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
             int parentId = 0;
             int childId = chooseBiggerChild(parentId);
 
-            while ((parentId * 2 + 1) < items.size()) {
+            while (doesHaveChildren(parentId)) {
+
                 if (isChildBiggerThanParent(parentId, childId)) {
                     swapItems(parentId, childId);
                     parentId = childId;
@@ -87,6 +81,10 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
         T childValue = items.get(childId);
 
         return childValue.compareTo(parentValue) > 0;
+    }
+
+    private boolean doesHaveChildren(int elementId) {
+        return (elementId * 2 + 1) < items.size();
     }
 
     private int chooseBiggerChild(int parentId) {
