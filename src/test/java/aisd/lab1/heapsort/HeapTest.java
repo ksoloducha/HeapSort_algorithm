@@ -21,12 +21,12 @@ public class HeapTest {
 
         heap.put(itemToPut);
     }
-    
+
     @Test
     public void put_should_addItemsInProperOrder_when_givenRightValues() {
         Double[] itemsToPut = {0.0, 2.5, -1.0, 5.0, 3.2};
         int n = itemsToPut.length;
-        
+
         for (int i = 0; i < n; i++) {
             heap.put(itemsToPut[i]);
         }

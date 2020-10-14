@@ -112,7 +112,7 @@ public class Heap<T extends Comparable<T>> implements HeapInterface<T> {
         items.set(firstId, items.get(secondId));
         items.set(secondId, firstValue);
     }
-    
+
     public T get(int i) {
         return items.get(i);
     }
